@@ -1,0 +1,57 @@
+{
+  "publishedAt": "2026-10-24",
+  "canonicalHub": "https://www.clapclip.net/benchmarks",
+  "studies": [
+    {
+      "id": "face-swap-containment-check",
+      "url": "https://www.clapclip.net/blog/face-swap-containment-check",
+      "thresholdRgbDelta": 8,
+      "runsPerSize": 3,
+      "deterministicHashMatch": true,
+      "metrics": {
+        "512x512": {
+          "madInsideRegion": 6.33,
+          "madOutsideRegion": 0.0007,
+          "pctChangedInside": 30.4,
+          "pctChangedOutside": 0,
+          "containmentSharePct": 100
+        },
+        "256x256": {
+          "madInsideRegion": 7.04,
+          "madOutsideRegion": 0.0004,
+          "pctChangedInside": 31.6,
+          "pctChangedOutside": 0,
+          "containmentSharePct": 100
+        }
+      }
+    },
+    {
+      "id": "2x-image-upscaling-ai-vs-lanczos",
+      "url": "https://www.clapclip.net/blog/2x-image-upscaling-ai-vs-lanczos",
+      "degradation": "0.5x OpenCV INTER_AREA downscale + JPEG Q50",
+      "scorer": "scikit-image 0.26.0 full-frame RGB PSNR (data_range=255) and Gaussian SSIM (sigma=1.5)",
+      "metrics": {
+        "astronaut_512": {
+          "lanczos2x": {
+            "psnrDb": 27.24,
+            "ssim": 0.8301
+          },
+          "clapclipAi2xFast": {
+            "psnrDb": 27.331,
+            "ssim": 0.8546
+          }
+        },
+        "coffee_600x400": {
+          "lanczos2x": {
+            "psnrDb": 26.506,
+            "ssim": 0.7333
+          },
+          "clapclipAi2xFast": {
+            "psnrDb": 27.088,
+            "ssim": 0.7622
+          }
+        }
+      }
+    }
+  ]
+}
